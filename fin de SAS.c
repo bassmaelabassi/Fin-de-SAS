@@ -85,3 +85,14 @@ void modifier_tache(struct tache *tache)
 		printf("Choix invalide.\n");
 	}
 }
+
+void supprimer_tache(struct tache taches[], int *nbr_tache, int index)
+{
+	int i = index;
+	while (i < *nbr_tache - 1)
+	{
+		taches[i] = taches[i + 1];
+		i++;
+	}
+	(*nbr_tache)--;
+}
