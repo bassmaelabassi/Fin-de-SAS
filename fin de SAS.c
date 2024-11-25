@@ -96,3 +96,17 @@ void supprimer_tache(struct tache taches[], int *nbr_tache, int index)
 	}
 	(*nbr_tache)--;
 }
+
+void filtrer_par_priorite(struct tache taches[], int nbr_tache, int prioritaire)
+{
+	printf("\n--- Taches avec priorite %s ---\n", prioritaire == 0 ? "basse" : "haute");
+	int i = 0;
+	while (i < nbr_tache)
+	{
+		if (taches[i].prioritaire == prioritaire)
+		{
+			afficher_tache(taches[i]);
+		}
+		i++;
+	}
+}
