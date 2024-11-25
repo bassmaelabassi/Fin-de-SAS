@@ -110,3 +110,118 @@ void filtrer_par_priorite(struct tache taches[], int nbr_tache, int prioritaire)
 		i++;
 	}
 }
+
+int main()
+{
+	struct tache taches[100];
+	int nbr_taches = 0;
+	int choix;
+
+	do
+	{
+		printf("\n1: Ajouter une tache\n");
+		printf("2: Afficher toutes les taches\n");
+		printf("3: Modifier une tache\n");
+		printf("4: Supprimer une tache\n");
+		printf("5: Filtrer les taches par priorite\n");
+		printf("6: Quitter\n");
+		printf("Choisissez une option : ");
+		scanf("%d", &choix);
+
+		switch (choix)
+		{
+		case 1:
+			if (nbr_taches < 100)
+			{
+				ajoutez_tache(&taches[nbr_taches]);
+				nbr_taches++;
+			}
+			else
+			{
+				printf("Nombre maximum de taches atteint.\n");
+			}
+			break;
+
+		case 2:
+			if (nbr_taches == 0)
+			{
+				printf("Aucune tache a afficher.\n");
+			}
+			else
+			{
+				int i = 0;
+				while (i < nbr_taches)
+				{
+					afficher_tache(taches[i]);
+					i++;
+				}
+			}
+			break;
+
+		case 3:
+			if (nbr_taches == 0)
+			{
+				printf("Aucune tache a modifier.\n");
+			}
+			else
+			{
+				int index;
+				printf("Entrez le numero de la tache a modifier (1 a %d) : ", nbr_taches);
+				scanf("%d", &index);
+				if (index > 0 && index <= nbr_taches)
+				{
+					modifier_tache(&taches[index - 1]);
+				}
+				else
+				{
+					printf("Indice invalide.\n");
+				}
+			}
+			break;
+
+		case 4:
+			if (nbr_taches == 0)
+			{
+				printf("Aucune tache a supprimer.\n");
+			}
+			else
+			{
+				int index;
+				printf("Entrez le numero de la tache a supprimer (1 a %d) : ", nbr_taches);
+				scanf("%d", &index);
+				if (index > 0 && index <= nbr_taches)
+				{
+					supprimer_tache(taches, &nbr_taches, index - 1);
+				}
+				else
+				{
+					printf("Indice invalide.\n");
+				}
+			}
+			break;
+
+		case 5:
+			printf("Entrez la priorite a filtrer (0 pour basse, 1 pour haute) : ");
+			int prioritaire;
+			scanf("%d", &prioritaire);
+			if (prioritaire == 0 || prioritaire == 1)
+			{
+				filtrer_par_priorite(taches, nbr_taches, prioritaire);
+			}
+			else
+			{
+				printf("Priorite invalide.\n");
+			}
+			break;
+
+		case 6:
+			printf("Au revoir !\n");
+			break;
+
+		default:
+			printf("Choix invalide. Veuillez reessayer.\n");
+		}
+	} while (choix != 6);
+
+	return 0;
+}
