@@ -43,3 +43,12 @@ void ajoutez_tache(struct tache *tache)
 	printf("Entrer le niveau de priorite (1 = haut, 0 = bas) : ");
 	scanf("%d", &tache->prioritaire);
 }
+
+void afficher_tache(struct tache tache)
+{
+	printf("----------- Tache -----------\n");
+	printf("Titre: %s\n", tache.titre);
+	printf("Description: %s\n", tache.description);
+	printf("Date: %02d/%02d/%04d\n", tache.date_sep.jour, tache.date_sep.mois, tache.date_sep.annee);
+	printf("Priorite: %d\n", tache.prioritaire);
+}
