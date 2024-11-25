@@ -52,3 +52,36 @@ void afficher_tache(struct tache tache)
 	printf("Date: %02d/%02d/%04d\n", tache.date_sep.jour, tache.date_sep.mois, tache.date_sep.annee);
 	printf("Priorite: %d\n", tache.prioritaire);
 }
+
+void modifier_tache(struct tache *tache)
+{
+	int choix;
+	printf("\n1. Modifier le titre\n");
+	printf("2. Modifier la description\n");
+	printf("3. Modifier la date\n");
+	printf("4. Modifier la priorite\n");
+	printf("Choisissez une option : ");
+	scanf("%d", &choix);
+
+	switch (choix)
+	{
+	case 1:
+		printf("Nouveau titre : ");
+		scanf(" %[^\n]%*c", tache->titre);
+		break;
+	case 2:
+		printf("Nouvelle description : ");
+		scanf(" %[^\n]%*c", tache->description);
+		break;
+	case 3:
+		printf("Nouvelle date (jour mois annee) : ");
+		scanf("%d %d %d", &tache->date_sep.jour, &tache->date_sep.mois, &tache->date_sep.annee);
+		break;
+	case 4:
+		printf("Nouvelle priorite (1 = haut, 0 = bas) : ");
+		scanf("%d", &tache->prioritaire);
+		break;
+	default:
+		printf("Choix invalide.\n");
+	}
+}
