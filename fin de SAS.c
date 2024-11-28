@@ -83,6 +83,7 @@ void modifier_tache(struct tache *tache)
 		break;
 	default:
 		printf("Choix invalide.\n");
+		break;
 	}
 }
 
